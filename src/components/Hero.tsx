@@ -68,7 +68,11 @@ export default function Hero() {
           transition={{ delay: 0.1, duration: 0.7, ease: ease.outQuart }}
           className="flex flex-col items-center mb-5"
         >
-          <div className="relative mb-4">
+          <motion.div
+            className="relative mb-4"
+            animate={{ y: [-8, 8, -8] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          >
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
@@ -79,7 +83,7 @@ export default function Hero() {
               <Image src="/photos/suit-portrait.jpg" alt="Moaaz Mohamed Elghamry" fill className="object-cover object-top" priority sizes="112px" />
             </div>
             <div className="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-emerald-500 border-[2.5px] border-[var(--bg-primary)]" />
-          </div>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
@@ -96,6 +100,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 0.3, duration: 0.6, ease: ease.outQuart }}
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--bg-card)] border border-[var(--glass-border)] text-[11px] md:text-xs text-[var(--text-muted)] tracking-wider uppercase"
+            data-cursor-hover
           >
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             <span className="font-mono min-w-0">
@@ -106,7 +111,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Name — word-by-word blur-fade */}
-        <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-tight leading-[1.15] px-2">
+        <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight leading-[1.15] px-2">
           {nameWords.map((word, i) => (
             <motion.span key={i} custom={i} variants={wordVariants} initial="hidden" animate="visible"
               className="inline-block text-gradient" style={{ marginInlineEnd: "0.25em", willChange: "transform, opacity, filter" }}>
@@ -157,7 +162,7 @@ export default function Hero() {
         >
           <motion.button whileHover={{ scale: 1.02, y: -1 }} whileTap={{ scale: 0.98 }} transition={spring.hover}
             onClick={scrollToProjects} data-cursor-hover
-            className="group relative px-6 py-3 rounded-xl font-medium text-white text-sm overflow-hidden">
+            className="group relative px-6 py-3 rounded-xl font-medium text-white text-sm overflow-hidden glow-primary">
             <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600" />
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[800ms] ease-out" />
             <span className="relative z-10 flex items-center justify-center gap-2"><Sparkles size={14} />{t.hero.exploreBtn}</span>

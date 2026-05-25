@@ -22,11 +22,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("portfolio-locale") as Locale | null;
-    if (stored && (stored === "en" || stored === "ar")) {
-      setLocale(stored);
-    }
-    setMounted(true);
+    const initLocale = () => {
+        const stored = localStorage.getItem("portfolio-locale") as Locale | null;
+        if (stored && (stored === "en" || stored === "ar")) {
+            setLocale(stored);
+        }
+        setMounted(true);
+    };
+    initLocale();
   }, []);
 
   useEffect(() => {

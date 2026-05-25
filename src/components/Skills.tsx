@@ -35,7 +35,7 @@ function SkillBar({ name, level, gradient, delay }: { name: string; level: numbe
         <span className="text-xs font-medium text-[var(--text-secondary)] group-hover:text-[var(--text-heading)] transition-colors duration-300">{name}</span>
         <span className="text-[10px] text-[var(--text-muted)] tabular-nums group-hover:text-[var(--text-secondary)] transition-colors duration-300">{level}%</span>
       </div>
-      <div className="h-1 rounded-full bg-[var(--bg-card)] overflow-hidden">
+      <div className="h-1.5 rounded-full bg-[var(--bg-card)] overflow-hidden">
         <motion.div className={`h-full rounded-full bg-gradient-to-r ${gradient}`}
           style={{ willChange: "width" }}
           initial={{ width: 0 }}

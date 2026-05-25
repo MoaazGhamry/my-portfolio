@@ -56,8 +56,8 @@ export default function Experience() {
                 <div className="absolute left-[19px] md:left-1/2 -translate-x-1/2 z-20">
                   <motion.div initial={{ scale: 0, filter: "blur(4px)" }} whileInView={{ scale: 1, filter: "blur(0px)" }}
                     viewport={{ once: true }} transition={{ delay: idx * 0.08 + 0.2, ...spring.gentle }} className="relative">
-                    <div className={`w-[12px] h-[12px] rounded-full ${expMeta[idx]?.dotColor || "bg-blue-500"} ${idx < 2 ? expMeta[idx]?.glowColor || "" : ""} border-[3px] border-[var(--bg-primary)]`} />
-                    {idx === 0 && <div className={`absolute inset-0 rounded-full ${expMeta[idx]?.dotColor} animate-ping opacity-20`} />}
+                    <div className={`w-[14px] h-[14px] rounded-full ${expMeta[idx]?.dotColor || "bg-blue-500"} ${idx < 2 ? expMeta[idx]?.glowColor || "" : ""} border-[3px] border-[var(--bg-primary)]`} />
+                    {idx === 0 && <div className={`absolute inset-0 rounded-full ${expMeta[idx]?.dotColor} animate-ping opacity-30`} />}
                   </motion.div>
                 </div>
                 {/* Card */}

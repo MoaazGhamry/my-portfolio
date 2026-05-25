@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Heart, ArrowUpRight, MapPin, Mail, Code2 } from "lucide-react";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa6";
 import { useLanguage } from "@/context/LanguageContext";
-import { ease, smoothViewport } from "@/lib/motion";
 
 const quickLinks = [
   { label: { en: "About", ar: "نبذة" }, href: "#about" },

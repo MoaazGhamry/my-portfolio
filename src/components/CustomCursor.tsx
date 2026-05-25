@@ -16,8 +16,13 @@ export default function CustomCursor() {
   const ringY = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-    if (isTouchDevice) { setIsTouch(true); return; }
+    const checkTouch = () => {
+        const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+        if (isTouchDevice && !isTouch) setIsTouch(true);
+        return isTouchDevice;
+    };
+
+    if (checkTouch()) return;
 
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);
