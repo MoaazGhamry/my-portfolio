@@ -75,7 +75,7 @@ export default function Projects() {
               viewport={smoothViewport}
               transition={{ delay: idx * 0.07, duration: 0.7, ease: ease.outQuart }}>
               <SpotlightCard>
-                <motion.div whileHover={{ y: -4 }} transition={spring.hover}
+                <motion.div whileHover={{ scale: 1.03, y: -8, boxShadow: "0 20px 40px -10px rgba(139,92,246,0.3)" }} transition={spring.hover}
                   className="glass-card p-5 md:p-6 h-full flex flex-col relative overflow-hidden group transition-all duration-400" data-cursor-hover>
                   <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r ${projectMeta[idx]?.gradient || "from-blue-500/20 to-cyan-500/20"} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                   <div className="flex items-center justify-between mb-4">

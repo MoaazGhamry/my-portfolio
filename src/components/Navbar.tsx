@@ -70,7 +70,7 @@ export default function Navbar() {
         <div
           className={`max-w-5xl mx-auto px-4 md:px-6 transition-all duration-500 ${
             isScrolled
-              ? "bg-[var(--bg-navbar)] backdrop-blur-xl border border-[var(--glass-border)] rounded-2xl shadow-lg mx-3 md:mx-auto"
+              ? "bg-[var(--bg-navbar)] backdrop-blur-xl border-b border-purple-500/40 rounded-2xl shadow-[0_4px_30px_rgba(139,92,246,0.2)] mx-3 md:mx-auto"
               : ""
           }`}
         >
