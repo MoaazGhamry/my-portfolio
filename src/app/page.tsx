@@ -8,6 +8,7 @@ import Certifications from "@/components/Certifications";
 import Projects from "@/components/Projects";
 import TechMarquee from "@/components/TechMarquee";
 import Experience from "@/components/Experience";
+import AiotLab from "@/components/AiotLab";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import SectionDivider from "@/components/SectionDivider";
@@ -31,6 +32,8 @@ export default function Home() {
       <SectionDivider />
       <Experience />
       <SectionDivider />
+      <AiotLab />
+      <SectionDivider />
       <Skills />
       <SectionDivider />
       <Contact />
@@ -38,3 +41,4 @@ export default function Home() {
     </>
   );
 }
+

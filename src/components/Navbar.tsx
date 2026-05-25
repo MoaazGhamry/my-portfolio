@@ -23,6 +23,32 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [activeSection, setActiveSection] = useState("");
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [showInstallBtn, setShowInstallBtn] = useState(false);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setShowInstallBtn(true);
+    };
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    if (typeof window !== "undefined" && window.matchMedia("(display-mode: standalone)").matches) {
+      setShowInstallBtn(false);
+    }
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    };
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`PWA install choice: ${outcome}`);
+    setDeferredPrompt(null);
+    setShowInstallBtn(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -111,8 +137,23 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Right side controls */}
+             {/* Right side controls */}
             <div className="flex items-center gap-1.5 md:gap-2">
+              {/* PWA Install Button */}
+              {showInstallBtn && (
+                <motion.button
+                  onClick={handleInstallClick}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  data-cursor-hover
+                  className="hidden md:flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[var(--text-heading)] bg-gradient-to-r from-emerald-600/20 to-teal-600/20 border border-emerald-500/30 rounded-xl hover:border-emerald-500/50 transition-all cursor-pointer"
+                  title="Install Application"
+                >
+                  <Download size={12} />
+                  <span>{isRTL ? "تثبيت" : "Install"}</span>
+                </motion.button>
+              )}
+
               {/* Language toggle */}
               <motion.button
                 onClick={toggleLocale}
@@ -201,11 +242,23 @@ export default function Navbar() {
                 href="/Moaaz Mohamed Elghamry - CV .pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-xl font-medium py-4 text-blue-400"
+                className={`flex items-center gap-3 text-xl font-medium py-4 text-blue-400 border-b border-[var(--line-color)] ${isRTL ? "justify-end" : "justify-start"}`}
               >
                 <Download size={18} />
                 {t.nav.cv}
               </motion.a>
+              {showInstallBtn && (
+                <motion.button
+                  initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: (navItems.length + 1) * 0.04 }}
+                  onClick={handleInstallClick}
+                  className={`flex items-center gap-3 text-xl font-medium py-4 text-emerald-400 border-b border-[var(--line-color)] w-full cursor-pointer ${isRTL ? "justify-end text-right" : "justify-start text-left"}`}
+                >
+                  <Download size={18} />
+                  {isRTL ? "تثبيت التطبيق" : "Install App"}
+                </motion.button>
+              )}
             </div>
           </motion.div>
         )}
