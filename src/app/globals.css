@@ -15,10 +15,10 @@ html.dark {
   --bg-overlay: rgba(2, 2, 4, 0.95);
   --text-primary: #e8e8ec;
   --text-secondary: rgba(255, 255, 255, 0.6);
-  --text-muted: rgba(255, 255, 255, 0.32);
+  --text-muted: rgba(255, 255, 255, 0.45);
   --text-heading: #f5f5f7;
   --glass-bg: rgba(255, 255, 255, 0.02);
-  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.1);
   --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
   --dot-color: rgba(255, 255, 255, 0.03);
   --line-color: rgba(255, 255, 255, 0.04);

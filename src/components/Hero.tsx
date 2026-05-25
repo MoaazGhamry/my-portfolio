@@ -96,6 +96,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 0.3, duration: 0.6, ease: ease.outQuart }}
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--bg-card)] border border-[var(--glass-border)] text-[11px] md:text-xs text-[var(--text-muted)] tracking-wider uppercase"
+            data-cursor-hover
           >
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             <span className="font-mono min-w-0">
@@ -106,7 +107,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Name — word-by-word blur-fade */}
-        <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-tight leading-[1.15] px-2">
+        <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight leading-[1.15] px-2">
           {nameWords.map((word, i) => (
             <motion.span key={i} custom={i} variants={wordVariants} initial="hidden" animate="visible"
               className="inline-block text-gradient" style={{ marginInlineEnd: "0.25em", willChange: "transform, opacity, filter" }}>

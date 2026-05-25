@@ -19,11 +19,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("portfolio-theme") as Theme | null;
-    if (stored) {
-      setTheme(stored);
-    }
-    setMounted(true);
+    const initTheme = () => {
+        const stored = localStorage.getItem("portfolio-theme") as Theme | null;
+        if (stored) {
+            setTheme(stored);
+        }
+        setMounted(true);
+    };
+    initTheme();
   }, []);
 
   useEffect(() => {
